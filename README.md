@@ -1,0 +1,2 @@
+Linear-oscillator_QThread
+=========================
