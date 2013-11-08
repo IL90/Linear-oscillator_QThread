@@ -30,7 +30,7 @@ class MyThread : public QThread {
 		static void setI(const int &i_) {I=i_; isFindP=0;}
 		static int  getK() {return k;}
 		static void setParent(PanelDraw *pr_) {pr=pr_;}
-		static void setMx(double mx[]) {xm=mx[0]; ym=mx[1];}
+		static void setMx(double mx[]) {for(int c=0;c<2;++c) xmt[c]=mx[c];}
 		static bool findPoint(list<Point *>::iterator &FP) {
 			if(isFindP) FP=iFindPoint; 
 			return isFindP;
@@ -42,7 +42,7 @@ class MyThread : public QThread {
 		static int I;
 		static PanelDraw *pr;
 		static bool isFindP;
-		static double xm,ym;
+		static double xmt[2];
 };
 
 class PanelDraw : public QFrame {

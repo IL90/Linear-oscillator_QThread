@@ -427,7 +427,7 @@ void MyThread::run() {
 	else if(I==2) {
 		for(iicrp=crp.begin();iicrp!=crp.end();++iicrp) {
 			if(isFindP) break;
-			if((fabs(xm - (**iicrp)->getX(0))<pr->RCUR) && (fabs(ym - (**iicrp)->getX(1))<pr->RCUR)) {
+			if((fabs(xmt[0] - (**iicrp)->getX(0))<pr->RCUR) && (fabs(xmt[1] - (**iicrp)->getX(1))<pr->RCUR)) {
 				isFindP=1;
 				iFindPoint=(*iicrp);
 				break;
@@ -485,9 +485,7 @@ bool PanelDraw::check() {
 PanelDraw *MyThread::pr=0;
 int MyThread::k=0;
 int MyThread::I=0;
-list<Point *>::iterator tmp;
-list<Point *>::iterator MyThread::iFindPoint=tmp;
+list<Point *>::iterator MyThread::iFindPoint;
 bool MyThread::isFindP=0;
-double MyThread::xm=0;
-double MyThread::ym=0;
+double MyThread::xmt[2];
 
