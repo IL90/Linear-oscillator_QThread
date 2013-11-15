@@ -58,6 +58,8 @@ class Line {
 		list<list<Line *>::iterator >::iterator getiiL(int j) const {return _iiL_lne[j];}
 	private:
 		void setLength();
+		double findR(Point *p1,Point *p2);
+	private:
 		list<Point*>::iterator _iP_lne[2];//итераторы списка P точек на концах линии
 		list< list<Line*>::iterator >::iterator _iiL_lne[2];//итераторы списка итераторов _iL_pnt для этих точек, указывающие на эту линию
 		double _length;//of the undeformed line 
@@ -92,9 +94,7 @@ class Point {
 		int getCount() const {return _count;}
 		int getJ() const {return _J;}
 		void setJ(const int &J) {assert(J>=0); _J=J;}
-		virtual void paint(QPainter *qp) {
-			qp->setPen(QPen(Qt::gray));
-		}
+		virtual void paint(QPainter *qp) {qp->setPen(QPen(Qt::gray));}
 		list< list<Line*>::iterator >::iterator pushLine(const list<Line*>::iterator &iL);
 		list< list<Line*>::iterator > *getiL() {return &_iL_pnt;}
 		list< list<Line*>::iterator > getcopyiL() const {return _iL_pnt;}
@@ -110,7 +110,6 @@ class Point {
 		static list<Line*> *_pL_pnt;//pointer to L
 };
 
-
 class lPoint: public Point {
 	public:
 		lPoint(const double &mass,const double x[]) : Point(mass,x) {}
@@ -125,7 +124,6 @@ class lPoint: public Point {
 	private:
 		static double _Kl;
 };
-
 class sPoint: public Point {
 	public:
 		sPoint(const double &mass,const double x[]) : Point(mass,x) {}

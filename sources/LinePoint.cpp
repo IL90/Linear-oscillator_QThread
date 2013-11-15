@@ -30,7 +30,7 @@ using std::list;
 class Line;
 class Point;
 
-inline double findR(Point *p1,Point *p2) {
+double Line::findR(Point *p1,Point *p2) {
 	double dx[2];
 	for(int c=0;c<2;++c) dx[c] = p1->getX(c) - p2->getX(c);
 	return sqrt(dx[0]*dx[0]+dx[1]*dx[1]);
